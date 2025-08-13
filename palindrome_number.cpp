@@ -1,10 +1,9 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
 
-bool isPalindrome(int x) //my
+bool isPalindrome(int x)
 {
     if (x < 0) return false;
     vector<int> arr;
@@ -36,4 +35,5 @@ int main()
 
 
 }
+
 
