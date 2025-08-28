@@ -1,50 +1,49 @@
 #include <iostream>
 using namespace std;
 
-  struct ListNode
-  {
-      int val;
-      ListNode *next;
-      ListNode() : val(0), next(nullptr) {}
-      ListNode(int x) : val(x), next(nullptr) {}
-      ListNode(int x, ListNode *next) : val(x), next(next) {}
-  };
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
  
-  class Solution {
-  public:
-      ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
-      {
-          if (l1 == nullptr) return l2;
-          else if (l2 == nullptr) return l1;
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+    {
+        if (l1 == nullptr) return l2;
+        else if (l2 == nullptr) return l1;
 
-          ListNode* dummy = new ListNode(-1);
-          ListNode* tail = dummy;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* tail = dummy;
 
-          int leftover = 0;
+        int leftover = 0;
 
-          while (l1 != nullptr || l2 != nullptr || leftover != 0)
-          {
-              int val = leftover;
-              if (l1 != nullptr)
-              {
-                  val += l1->val;
-                  l1 = l1->next;
-              }
-              if (l2 != nullptr)
-              {
-                  val += l2->val;
-                  l2 = l2->next;
-              }
+        while (l1 != nullptr || l2 != nullptr || leftover != 0)
+        {
+            int val = leftover;
+            if (l1 != nullptr)
+            {
+                val += l1->val;
+                l1 = l1->next;
+            }
+            if (l2 != nullptr)
+            {
+                val += l2->val;
+                l2 = l2->next;
+            }
 
-              leftover = val / 10;
-              ListNode* new_node = new ListNode(val % 10);
-              tail->next = new_node;
-              tail = tail->next;
-          }
-
-          return dummy->next;
-      }
-  };
+            leftover = val / 10;
+            ListNode* new_node = new ListNode(val % 10);
+            tail->next = new_node;
+            tail = tail->next;
+        }
+        return dummy->next;
+    }
+};
 
 void free_list(ListNode* list)
 {
@@ -76,5 +75,6 @@ int main()
     free_list(l2);
     free_list(l3);
 }
+
 
 
